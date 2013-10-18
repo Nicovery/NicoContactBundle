@@ -1,0 +1,3 @@
+nico_contact_save:
+    pattern:  /save
+    defaults: { _controller: NicoContactBundle:Contact:save }

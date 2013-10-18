@@ -1,0 +1,9 @@
+{% extends sonata_block.templates.block_base %}
+{% block block %}
+    {{ parent() }} Nous contacter
+{% endblock %}
+    <form action="{{ path('nico_contact_formulaire') }}" method="post" {{ form_enctype(form) }}>
+          {{ form_widget(form) }}
+          <input type="submit" />
+    </form>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends "::default.layout.html.twig" %}
+{% block title %}
+    {{ parent() }} Liste des contacts
+{% endblock %}
+
+{% block body %}
+<table class="table">
+    <thead>
+        <tr>
+            <th>Civlité</th>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Tél</th>
+            <th>Mobile</th>
+            <th>Ville</th>
+            <th>Créer le</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for contact in listeContacts %}
+        <tr>
+            <td>{{contact.civilite}}</td>
+            <td>{{contact.nom}}</td>
+            <td>{{contact.prenom}}</td>
+            <td>{{contact.telephone}}</td>
+            <td>{{contact.mobile}}</td>
+            <td>{{contact.ville}}</td>
+            <td>{{contact.creer|date('d/m/Y H:i')}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

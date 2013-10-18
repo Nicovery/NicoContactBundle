@@ -1,0 +1,33 @@
+parameters:
+#    nico_contact.example.class: Nico\ContactBundle\Example
+
+services:
+#    nico_contact.example:
+#        class: %nico_contact.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
+  nico.contact.block.contact:
+    class: Nico\ContactBundle\Block\ContactBlockService
+    arguments: [nico.contact.block.contact,@templating,@service_container]
+    # arguments: [nico.contact.block.contact,@service_container]
+    tags:
+      - { name: sonata.block}
+
+  nico.contact.controller.bloc:
+    class: Nico\ContactBundle\Controller\BlocController
+    arguments: [@service_container,nico.contact.controller.bloc]
+    scope: container
+
+  nico.contact.form:
+    class: Nico\ContactBundle\Form\ContactType
+    tags:
+        - { name: form.type, alias: 'contactForm' }
+
+  sonata.admin.contact:
+    class: Nico\ContactBundle\Admin\ContactAdmin
+    arguments: [null, Nico\ContactBundle\Entity\Contact, 'SonataAdminBundle:CRUD']
+    calls:
+      - [setTranslationDomain, [NicoContactBundle]]
+    tags:
+      - { name: sonata.admin, manager_type: orm, group: Contact, label: Contact }
+  
+
