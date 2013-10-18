@@ -15,7 +15,7 @@
     ],
     "require": {
         "php": ">=5.3.0",
-        "sonata-project/block-bundle": "2.2.*@dev",
+        "sonata-project/block-bundle": "2.2.*@dev"
     },
     "autoload": {
         "psr-0": {
